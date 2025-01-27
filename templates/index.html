@@ -2,11 +2,21 @@
 <link rel="stylesheet" type="text/css" href="/static/style.css">
 <title>Topic Analysis</title>
 <body>
-<p>Current topics: <b>{{ topics|join(', ') }}</b></p>
-<br>
-<p>Enter some text, and we'll analyze it: </p>
-<div><textarea></textarea>
-<button>Submit</button></div>
-<ul>
-</ul>
+    <h1>Enter some text, and we'll analyze it.</h1>
+    <p>Current topics: <b>{{ topics|join(', ') }}</b></p>
+    <br>
+    <div>
+        <form method="POST"action="{{ url_for('handle_submit') }}">
+            <div>
+                <input type="text" name="text">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <p>History:</p>
+    <ul>
+        {% for elem in history %}
+            <li>{{elem}}</li>
+        {% endfor %}
+    </ul>
 </body>
