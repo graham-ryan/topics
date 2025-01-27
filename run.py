@@ -15,7 +15,7 @@ def get_topics() -> list:
 def get_history() -> list:
 	return [x for x in conn.query("""select d.text, t.name, array_inner_product(d.embedding, t.embedding) AS similarity 
 								  from documents d
-								  cross join topics t  
+								  cross join topics t
 								  order by d.id desc""").fetchall()]
 	
 @app.route('/')

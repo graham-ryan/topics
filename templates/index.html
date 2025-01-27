@@ -16,7 +16,11 @@
     <p>History:</p>
     <ul>
         {% for elem in history %}
-            <li>{{elem}}</li>
+            {% if elem[2] > 0.6 +%}
+                <li><b>{{elem}}</b></li>
+            {% else %}
+                <li>{{elem}}</li>
+            {% endif %}
         {% endfor %}
     </ul>
 </body>
